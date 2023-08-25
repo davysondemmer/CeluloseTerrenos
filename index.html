@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>Informações para empresa de Celulose e Papel-Terrenos</title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/TerrenosCarRaio200KmPirapora_1.js"></script>
+        <script src="data/TerrenosCarRaio200KmAraua_2.js"></script>
+        <script src="data/Terrenos_3.js"></script>
+        <script src="data/Municpios_4.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[-20.88497529403923,-47.47506051729708],[-15.536800297596562,-39.21147793133018]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleHybrid_0');
+        map.getPane('pane_GoogleHybrid_0').style.zIndex = 400;
+        var layer_GoogleHybrid_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleHybrid_0',
+            opacity: 1.0,
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 20
+        });
+        layer_GoogleHybrid_0;
+        map.addLayer(layer_GoogleHybrid_0);
+        function pop_TerrenosCarRaio200KmPirapora_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Código CAR do imóvel</th>\
+                        <td>' + (feature.properties['Código CAR do imóvel'] !== null ? autolinker.link(feature.properties['Código CAR do imóvel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo de imóvel</th>\
+                        <td>' + (feature.properties['Tipo de imóvel'] !== null ? autolinker.link(feature.properties['Tipo de imóvel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área (m²)</th>\
+                        <td>' + (feature.properties['Área (m²)'] !== null ? autolinker.link(feature.properties['Área (m²)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Declividade média (graus)</th>\
+                        <td>' + (feature.properties['Declividade média (graus)'] !== null ? autolinker.link(feature.properties['Declividade média (graus)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Vazão média para captação subterrânea</th>\
+                        <td>' + (feature.properties['Vazão média para captação subterrânea'] !== null ? autolinker.link(feature.properties['Vazão média para captação subterrânea'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TerrenosCarRaio200KmPirapora_1_0() {
+            return {
+                pane: 'pane_TerrenosCarRaio200KmPirapora_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,178,151,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_TerrenosCarRaio200KmPirapora_1');
+        map.getPane('pane_TerrenosCarRaio200KmPirapora_1').style.zIndex = 401;
+        map.getPane('pane_TerrenosCarRaio200KmPirapora_1').style['mix-blend-mode'] = 'normal';
+        var layer_TerrenosCarRaio200KmPirapora_1 = new L.geoJson(json_TerrenosCarRaio200KmPirapora_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TerrenosCarRaio200KmPirapora_1',
+            layerName: 'layer_TerrenosCarRaio200KmPirapora_1',
+            pane: 'pane_TerrenosCarRaio200KmPirapora_1',
+            onEachFeature: pop_TerrenosCarRaio200KmPirapora_1,
+            style: style_TerrenosCarRaio200KmPirapora_1_0,
+        });
+        bounds_group.addLayer(layer_TerrenosCarRaio200KmPirapora_1);
+        function pop_TerrenosCarRaio200KmAraua_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Código CAR do imóvel</th>\
+                        <td>' + (feature.properties['Código CAR do imóvel'] !== null ? autolinker.link(feature.properties['Código CAR do imóvel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Tipo de imóvel</th>\
+                        <td>' + (feature.properties['Tipo de imóvel'] !== null ? autolinker.link(feature.properties['Tipo de imóvel'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área (m²)</th>\
+                        <td>' + (feature.properties['Área (m²)'] !== null ? autolinker.link(feature.properties['Área (m²)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Declividade (graus)</th>\
+                        <td>' + (feature.properties['Declividade (graus)'] !== null ? autolinker.link(feature.properties['Declividade (graus)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Vazão subterrânea</th>\
+                        <td>' + (feature.properties['Vazão subterrânea'] !== null ? autolinker.link(feature.properties['Vazão subterrânea'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_TerrenosCarRaio200KmAraua_2_0() {
+            return {
+                pane: 'pane_TerrenosCarRaio200KmAraua_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(196,60,57,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_TerrenosCarRaio200KmAraua_2');
+        map.getPane('pane_TerrenosCarRaio200KmAraua_2').style.zIndex = 402;
+        map.getPane('pane_TerrenosCarRaio200KmAraua_2').style['mix-blend-mode'] = 'normal';
+        var layer_TerrenosCarRaio200KmAraua_2 = new L.geoJson(json_TerrenosCarRaio200KmAraua_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TerrenosCarRaio200KmAraua_2',
+            layerName: 'layer_TerrenosCarRaio200KmAraua_2',
+            pane: 'pane_TerrenosCarRaio200KmAraua_2',
+            onEachFeature: pop_TerrenosCarRaio200KmAraua_2,
+            style: style_TerrenosCarRaio200KmAraua_2_0,
+        });
+        bounds_group.addLayer(layer_TerrenosCarRaio200KmAraua_2);
+        function pop_Terrenos_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <th scope="row">Identificação</th>\
+                        <td>' + (feature.properties['Identificação'] !== null ? autolinker.link(feature.properties['Identificação'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Data</th>\
+                        <td>' + (feature.properties['Data'] !== null ? autolinker.link(feature.properties['Data'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Município</th>\
+                        <td>' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Parte_da_Sudene</th>\
+                        <td>' + (feature.properties['Parte_da_Sudene'] !== null ? autolinker.link(feature.properties['Parte_da_Sudene'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área (m²)</th>\
+                        <td>' + (feature.properties['Área (m²)'] !== null ? autolinker.link(feature.properties['Área (m²)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Terrenos_3_0() {
+            return {
+                pane: 'pane_Terrenos_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(229,182,54,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Terrenos_3');
+        map.getPane('pane_Terrenos_3').style.zIndex = 403;
+        map.getPane('pane_Terrenos_3').style['mix-blend-mode'] = 'normal';
+        var layer_Terrenos_3 = new L.geoJson(json_Terrenos_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Terrenos_3',
+            layerName: 'layer_Terrenos_3',
+            pane: 'pane_Terrenos_3',
+            onEachFeature: pop_Terrenos_3,
+            style: style_Terrenos_3_0,
+        });
+        bounds_group.addLayer(layer_Terrenos_3);
+        map.addLayer(layer_Terrenos_3);
+        function pop_Municpios_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2"><strong>Município</strong><br />' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">População</th>\
+                        <td>' + (feature.properties['População'] !== null ? autolinker.link(feature.properties['População'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Pessoal ocupado (2021)</th>\
+                        <td>' + (feature.properties['Pessoal ocupado (2021)'] !== null ? autolinker.link(feature.properties['Pessoal ocupado (2021)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Salário médio (2021- em salários mínimos)</th>\
+                        <td>' + (feature.properties['Salário médio (2021- em salários mínimos)'] !== null ? autolinker.link(feature.properties['Salário médio (2021- em salários mínimos)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Área plantada de eucaliptos (ha)</th>\
+                        <td>' + (feature.properties['Área plantada de eucaliptos (ha)'] !== null ? autolinker.link(feature.properties['Área plantada de eucaliptos (ha)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Municpios_4_0() {
+            return {
+                pane: 'pane_Municpios_4',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Municpios_4');
+        map.getPane('pane_Municpios_4').style.zIndex = 404;
+        map.getPane('pane_Municpios_4').style['mix-blend-mode'] = 'normal';
+        var layer_Municpios_4 = new L.geoJson(json_Municpios_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Municpios_4',
+            layerName: 'layer_Municpios_4',
+            pane: 'pane_Municpios_4',
+            onEachFeature: pop_Municpios_4,
+            style: style_Municpios_4_0,
+        });
+        bounds_group.addLayer(layer_Municpios_4);
+        map.addLayer(layer_Municpios_4);
+            var title = new L.Control();
+            title.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            title.update = function () {
+                this._div.innerHTML = '<h2>Informações para empresa de Celulose e Papel-Terrenos</h2>';
+            };
+            title.addTo(map);
+            var abstract = new L.Control({'position':'topright'});
+            abstract.onAdd = function (map) {
+                this._div = L.DomUtil.create('div',
+                'leaflet-control abstract');
+                this._div.id = 'abstract'
+                    this._div.setAttribute("onmouseenter", "abstract.show()");
+                    this._div.setAttribute("onmouseleave", "abstract.hide()");
+                    this.hide();
+                    return this._div;
+                };
+                abstract.hide = function () {
+                    this._div.classList.remove("abstractUncollapsed");
+                    this._div.classList.add("abstract");
+                    this._div.innerHTML = 'i'
+                }
+                abstract.show = function () {
+                    this._div.classList.remove("abstract");
+                    this._div.classList.add("abstractUncollapsed");
+                    this._div.innerHTML = 'Fontes das informações:<br /><br />Municípios: Fonte: IBGE Cidades. Disponível em < https://cidades.ibge.gov.br/ >. Acesso em 22 de agosto de 2023. <br /><br />Terrenos: Fonte: Terrenos indicados pelas prefeituras municipais à Invest Minas. <br /><br />Terrenos Car Raio 200 Km Araçuaí: Fonte: Terrenos acima de 1500 hectares no Cadastro Ambiental Rural em um raio de 200 Km a partir do município de Araçuaí. Disponível em < https://www.car.gov.br/publico/imoveis/index  >. Acesso em 23 de fevereiro de 2023. <br />  <br />Terrenos Car Raio 200 Km Pirapora: Fonte: Terrenos acima de 1500 hectares no Cadastro Ambiental Rural em um raio de 200 Km a partir do município de Pirapora. Disponível em < https://www.car.gov.br/publico/imoveis/index  >. Acesso em 23 de fevereiro de 2023. ';
+            };
+            abstract.addTo(map);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/Municpios_4.png" /> Municípios': layer_Municpios_4,'<img src="legend/Terrenos_3.png" /> Terrenos': layer_Terrenos_3,'<img src="legend/TerrenosCarRaio200KmAraua_2.png" /> Terrenos Car Raio 200 Km Araçuaí': layer_TerrenosCarRaio200KmAraua_2,'<img src="legend/TerrenosCarRaio200KmPirapora_1.png" /> Terrenos Car Raio 200 Km Pirapora': layer_TerrenosCarRaio200KmPirapora_1,"Google Hybrid": layer_GoogleHybrid_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
